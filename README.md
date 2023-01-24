@@ -1,48 +1,76 @@
-# Django Starter with CustomUser, Django Documentation Generator, DEV-PROD settings, pipenv, and Heroku Procfile
+# Django Image File Upload - **APP IS COMPLETE : NEED TO CREATE DOCUMENTATION**
 
-* NOTE: Author is using PowerShell for this guide.
+* Simple Django app which shows how to upload a file to a Django project.
 
-## Features
+## Interesting Concepts
 
-* Custom user model.
-* Django admin documentation generator.
-* Separate DEV and PROD settings.
-* Pipfile included.
-* Heroku Procfile included.
-* [Project Directory Structure](notes/00_directory_structure.md)
+### Resources
 
-## Assumptions
+* [`<input type="file">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file)
+* [HTML attribute: `accept`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept)
+* Heroku:
+  * [Configuring Django Apps for Heroku](https://devcenter.heroku.com/articles/django-app-configuration)
+  * [Django and Static Assets](https://devcenter.heroku.com/articles/django-assets)
+  * <https://github.com/heroku/python-getting-started>
 
-* User has functioning [Python](https://www.python.org/downloads/) 3.11 installation.
-* User has functioning [pipenv](https://pypi.org/project/pipenv/) installation.
-* User has functioning [git](https://git-scm.com/downloads) installation.
-* User is familiar with how to use terminal commands.
-* User has [Heroku](https://www.heroku.com/) account.
-* User has [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) installed.
+### Production Deployment Options
 
-## **WARNING:**
+* `SECRET_KEY`:
 
-* [Deployment checklist - docs.djangoproject.com](https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/)
-  * This template has Django `SECRET_KEY` exposed in both development and production settings files. It is important to create your own separate `SECRET_KEY` for development and production and keep them out of the codebase. This template has `SECRET_KEY` exposed in order to get the user up and running quickly.
+  ```python
+  import os
 
-## Process
+  SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag'
+  )
+  ```
 
-1. [Create Repository from DjangoCustomUserStarter-heroku Template](notes/01_create_repository_from_template.md)
-1. [Run Application Locally](notes/02_run_application_locally.md)
-1. [Create Heroku Application Server Instance](notes/03_create_heroku_application_server_instance.md)
-1. [Provision Database Server Instance](notes/04_provision_database_server_instance.md)
-1. [Add DJANGO_SETTINGS_MODULE to Config Vars](notes/05_add_django_settings_module_to_config_vars.md)
-1. [Add Django SECRET_KEY to Config Vars](notes/06_add_secret_key_to_config_vars.md)
-1. [Add Database Settings to Config Vars](notes/07_add_database_settings_to_config_vars.md)
-1. [Modify ALLOWED_HOSTS](notes/08_modify_allowed_hosts.md)
-1. [Push to Heroku and Create Superuser](notes/09_push_to_heroku_and_createsuperuser.md)
+* `DEBUG`:
 
-## Excellent resources, this project wouldn't have been possible without these
+  ```python
+  import os
 
-* CustomUser method: [Django Best Practices: Custom User Model - Will Vincent - learndjango.com](https://learndjango.com/tutorials/django-custom-user-model)
-* Docutils: [The Django admin documentation generator - docs.djangoproject.com](https://docs.djangoproject.com/en/4.0/ref/contrib/admin/admindocs/)
-* DEV and PROD settings: [Configuring Django Settings for Production - thinkster.io](https://thinkster.io/tutorials/configuring-django-settings-for-production)
+  DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+  ```
 
-## Links to this project's pages
+### Image File Paths
 
-* [DjangoCustomUserStarter-heroku Repository](https://github.com/brucestull/DjangoCustomUserStarter-heroku)
+* [`config/settings.py`](./config/settings.py):
+
+  ```python
+  MEDIA_ROOT = BASE_DIR / 'media-root'
+  MEDIA_URL = '/media-url/'
+  ```
+
+  * [`pictures/models.py`](./pictures/models.py):
+  
+    ```python
+    class Image(models.Model):
+        #...
+        img = models.ImageField(upload_to='media/')
+        #...
+    ```
+  
+    * Database field:
+      * `media/test_image_01.png`
+    * Local directory:
+      * `media-root\media\test_image_01.png`
+    * Browser directory:
+      * `media-url/media/test_image_01.png`
+  
+  * [`pictures/models.py`](./pictures/models.py):
+  
+    ```python
+    class Image(models.Model):
+        #...
+        img = models.ImageField(upload_to='images/')
+        #...
+    ```
+  
+    * Database field:
+      * `images/test_image_01.png`
+    * Local directory:
+      * `media-root\images\test_image_01.png`
+    * Browser directory:
+      * `media-url/images/test_image_01.png`
