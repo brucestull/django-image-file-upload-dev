@@ -10,11 +10,13 @@
         <main>
             <main>
                 <a
-                    href="https://github.com/brucestull/DjangoCustomUserStarter-heroku"
+                    href="https://github.com/brucestull/django-image-file-upload"
                     target="_blank"
                     >
-                    DjangoCustomUserStarter GitHub Repository
+                    <code>django-image-file-upload</code> GitHub Repository
                 </a>
+                <br>
+                <a href={% url 'pictures:index' %}>Pictures</a>
                 {% if user.is_staff %}
                     {% include 'staff.html' %}
                 {% endif %}

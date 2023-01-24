@@ -10,6 +10,7 @@ gunicorn = "==20.1.0"
 whitenoise = "==6.3.0"
 psycopg2 = "==2.9.5"
 tzdata = "==2022.7"
+pillow = "==9.4.0"
 
 [dev-packages]
 

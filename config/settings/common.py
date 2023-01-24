@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
 
     'accounts.apps.UsersConfig',
+    'pictures.apps.PicturesConfig',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +52,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates'],  # Our change
+        'DIRS': [ BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,7 +96,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -108,6 +109,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_DIR = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -122,4 +124,7 @@ LOGOUT_REDIRECT_URL = 'home'
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
-THE_SITE_NAME = 'DjangoCustomUserStarter'
+THE_SITE_NAME = 'Django Image Upload'
+
+MEDIA_ROOT = BASE_DIR / 'media-root'
+MEDIA_URL = '/media-url/'

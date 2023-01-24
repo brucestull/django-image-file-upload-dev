@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ the_site_name }}
+    -
+    {{ page_title }}
+{% endblock title %}
+
+{% block content %}
+
+    <form action="{% url 'pictures:upload' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% comment %} `type="file"`: Input field accepts 'file's.{% endcomment %}
+        {% comment %} `name="picture"`: We can get the `file` using the key `picture`{% endcomment %}
+        {% comment %} `accept="image/*"`: Input field accepts files of any type of image (image/png, image/jpg, etc). {% endcomment %}
+        <input type="file" name="picture" accept="image/*" required>
+        <input type="text" name="title" required>
+        <button type="submit">submit</button>
+    </form>
+
+    <div>
+        <ul>
+            {% for image in images %}
+            <li><img src="{{ image.img.url }}" height='100px'> </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock content %}

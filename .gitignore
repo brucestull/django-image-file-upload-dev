@@ -1,9 +1,15 @@
 # Use '.git/info/exclude' to exclude user-specific files from git tracking in the current repo.
 # https://riptutorial.com/git/example/8049/ignore-files-locally-without-committing-ignore-rules
 
-# Ignore `local_things`
+# Ignore `local_things` directory and files:
 local_things*
+
+# Ignore the `sent_emails` directory and files:
 sent_emails
+
+# See `### Django ###` section below for other options (`media`, etc).
+# Ignore the `media-root` directory and files:
+media-root
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,python,django,windows,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,python,django,windows,visualstudiocode
