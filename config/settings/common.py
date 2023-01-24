@@ -126,5 +126,5 @@ EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
 THE_SITE_NAME = 'Django Image Upload'
 
-MEDIA_ROOT = BASE_DIR / 'media-root'
-MEDIA_URL = '/media-url/'
+# MEDIA_ROOT = BASE_DIR / 'media-root'
+# MEDIA_URL = '/media-url/'
