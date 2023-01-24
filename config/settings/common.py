@@ -108,8 +108,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/staticfiles/'
-STATIC_DIR = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
+STATIC_DIR = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -126,5 +126,5 @@ EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
 THE_SITE_NAME = 'Django Image Upload'
 
-# MEDIA_ROOT = BASE_DIR / 'media-root'
-# MEDIA_URL = '/media-url/'
+MEDIA_ROOT = BASE_DIR / 'media-root'
+MEDIA_URL = '/media-url/'
