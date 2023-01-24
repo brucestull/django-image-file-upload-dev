@@ -20,7 +20,7 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 
 from config.settings.common import THE_SITE_NAME
-# from config.settings.common import MEDIA_URL, MEDIA_ROOT
+from config.settings.common import MEDIA_URL, MEDIA_ROOT
 
 urlpatterns = [
     path(
@@ -39,5 +39,4 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     
     path('pictures/', include('pictures.urls')),
-]
-# ] + static(MEDIA_URL, document_root = MEDIA_ROOT)
+] + static(MEDIA_URL, document_root = MEDIA_ROOT)
