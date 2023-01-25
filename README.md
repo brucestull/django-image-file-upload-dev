@@ -4,6 +4,14 @@
 
 ## Interesting Concepts
 
+### User Upload of Images
+
+* `Whitenoise` is not suitable for user uploads of images. It is only suitable for static files.
+  * There are also security issues with `Whitenoise` and user uploads of images to host servers.
+* For my portfolio app, it will be proper for me to add images to `static` directory, add the images to the repo, and then use `Whitenoise` to serve them.
+* Possible solution:
+  * <https://django-storages.readthedocs.io/en/latest/>
+
 ### Resources
 
 * [`<input type="file">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file)
