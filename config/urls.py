@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
@@ -38,4 +39,16 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     
     path('pictures/', include('pictures.urls')),
-] + static(MEDIA_URL, document_root = MEDIA_ROOT)
+]
+
+# It seems that these print statements are only run on server restart.
+# In development, `settings.DEBUG` is defined in `config\settings\development.py`. And this `settings.DEBUG` reflects that value.
+# So, if we change the DEBUG setting, we may need to restart the server?
+print('')
+print('settings.DEBUG: ', settings.DEBUG)
+print('')
+
+if settings.DEBUG:
+    urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
+
+# static(MEDIA_URL, document_root = MEDIA_ROOT)

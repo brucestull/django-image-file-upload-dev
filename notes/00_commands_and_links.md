@@ -36,6 +36,7 @@
 * `python manage.py migrate`
 * `python manage.py createsuperuser`
 * `python manage.py createsuperuser --email admin@email.app --username admin`
+* `python manage.py createsuperuser --email FlynntKnapp@email.app --username FlynntKnapp`
 
 ### Django Create `SECRET_KEY`
 

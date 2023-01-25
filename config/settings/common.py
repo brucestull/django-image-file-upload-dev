@@ -124,7 +124,7 @@ LOGOUT_REDIRECT_URL = 'home'
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
-THE_SITE_NAME = 'Django Image Upload'
+THE_SITE_NAME = 'Django Picture Upload'
 
 MEDIA_ROOT = BASE_DIR / 'media-root'
 MEDIA_URL = '/media-url/'

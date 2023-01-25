@@ -1,4 +1,4 @@
-# Django Image File Upload - **APP IS COMPLETE : NEED TO CREATE DOCUMENTATION**
+# Django Picture File Upload - **APP IS COMPLETE : NEED TO CREATE DOCUMENTATION**
 
 * Simple Django app which shows how to upload a file to a Django project.
 
@@ -12,6 +12,7 @@
   * [Configuring Django Apps for Heroku](https://devcenter.heroku.com/articles/django-app-configuration)
   * [Django and Static Assets](https://devcenter.heroku.com/articles/django-assets)
   * <https://github.com/heroku/python-getting-started>
+* [Django File (and Image) Uploads Tutorial](https://learndjango.com/tutorials/django-file-and-image-uploads-tutorial)
 
 ### Production Deployment Options
 
@@ -34,7 +35,7 @@
   DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
   ```
 
-### Image File Paths
+### Picture File Paths
 
 * [`config/settings.py`](./config/settings.py):
 
@@ -46,9 +47,9 @@
   * [`pictures/models.py`](./pictures/models.py):
   
     ```python
-    class Image(models.Model):
+    class Picture(models.Model):
         #...
-        img = models.ImageField(upload_to='media/')
+        image = models.ImageField(upload_to='media/')
         #...
     ```
   
@@ -62,9 +63,9 @@
   * [`pictures/models.py`](./pictures/models.py):
   
     ```python
-    class Image(models.Model):
+    class Picture(models.Model):
         #...
-        img = models.ImageField(upload_to='images/')
+        image = models.ImageField(upload_to='images/')
         #...
     ```
   
@@ -74,3 +75,10 @@
       * `media-root\images\test_image_01.png`
     * Browser directory:
       * `media-url/images/test_image_01.png`
+
+### `MEDIA_ROOT`
+
+* Open up config/settings.py in your text editor. We will add two new configurations. By default MEDIA_URL and MEDIA_ROOT are empty and not displayed so we need to configure them:
+
+  * MEDIA_ROOT is the absolute filesystem path to the directory for user-uploaded files
+  * MEDIA_URL is the URL we can use in our templates for the files

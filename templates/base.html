@@ -16,7 +16,12 @@
                     <code>django-image-file-upload</code> GitHub Repository
                 </a>
                 <br>
-                <a href={% url 'pictures:index' %}>Pictures</a>
+                <a href={% url 'pictures:function' %}>Pictures - <code>function</code></a>
+                <br>
+                <a href={% url 'pictures:class' %}>Pictures - <code>class</code></a>
+                <br>
+                <a href={% url 'pictures:create-class' %}>Pictures: Add - <code>class</code></a>
+                <br>
                 {% if user.is_staff %}
                     {% include 'staff.html' %}
                 {% endif %}
